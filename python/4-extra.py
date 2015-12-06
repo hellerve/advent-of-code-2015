@@ -6,5 +6,5 @@ def solve(x):
         k += 1
     return k
 
-x = "ckczppom"
+x = ""
 print(solve(x))
