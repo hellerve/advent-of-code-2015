@@ -1,0 +1,11 @@
+(define (solve x)
+  (cadr (reduce
+    (lambda (acc el)
+      (if (eq? (car acc) -1)
+        acc
+        (list (if (eq? el #\() (add1 (car acc)) (sub1 (car acc))) (add1 (cadr acc)))))
+    [0 0]
+    x)))
+
+(define x "")
+(write (solve (string->list x)))

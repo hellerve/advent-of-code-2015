@@ -1,0 +1,9 @@
+(define (solve_all complete)
+  (define (solve l w h)
+    (let ((s (sort:sort (list l w h))))
+      (+ (* l w h) (* (car s) 2) (* (cadr s) 2))))
+  (math:list-sum (map (lambda (x) (solve (car x) (cadr x) (caddr x))) complete)))
+
+(define x [])
+
+(write (solve_all (map (lambda (x) (map (lambda (i) (string->number i)) (string:split x #\x))) x)))

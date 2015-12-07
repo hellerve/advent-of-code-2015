@@ -1,0 +1,20 @@
+(define (solve input)
+  (define (step x state visited)
+    (let ((ret (lambda (el) (if (in? visited el) (list el visited) (list el (+= visited el))))))
+      (case x
+        ((#\>) (ret (list (add1 (car state)) (cadr state))))
+        ((#\<) (ret (list (sub1 (car state)) (cadr state))))
+        ((#\^) (ret (list (car state) (add1 (cadr state)))))
+        ((#\v) (ret (list (car state) (sub1 (cadr state)))))
+        (else (begin (error "faulty input: " x) (exit 1))))))
+  (let loop ((test input)
+             (state [0 0])
+             (visited (list [0 0])))
+    (if (null? test)
+      (length visited)
+      (let ((d (step (car test) state visited)))
+        (loop (cdr test) (car d) (cadr d))))))
+
+
+(define x "")
+(write (solve (string->list x)))
