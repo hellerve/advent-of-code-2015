@@ -1,3 +1,3 @@
 (define (solve input)
-  (- (list:count (string->list input) #\()
-     (list:count (string->list input #\)))))
+  (- (string:count input #\()
+     (string:count input #\))))
